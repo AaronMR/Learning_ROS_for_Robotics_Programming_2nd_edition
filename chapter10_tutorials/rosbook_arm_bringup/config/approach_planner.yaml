@@ -1,0 +1,10 @@
+approach_planner:
+  planning_groups: # Sorted by order of preference
+    - arm
+
+  exclude_from_planning_joints:
+    - finger_1_joint
+    - finger_2_joint
+
+  joint_tolerance: 0.01
+  skip_planning_approach_vel: 0.5

@@ -1,0 +1,11 @@
+gains:
+  shoulder_joint:  {p: 1000.0, d: 10.0, i: 0.01, i_clamp: 3.0}
+  rotor_0_joint:   {p: 1000.0, d: 10.0, i: 0.01, i_clamp: 3.0}
+  upper_arm_joint: {p: 1000.0, d: 10.0, i: 0.01, i_clamp: 3.0}
+  rotor_1_joint:   {p: 1000.0, d: 10.0, i: 0.01, i_clamp: 3.0}
+  forearm_joint:   {p: 1000.0, d: 10.0, i: 0.01, i_clamp: 3.0}
+  rotor_2_joint:   {p: 1000.0, d: 10.0, i: 0.01, i_clamp: 3.0}
+  tool_joint:      {p: 1000.0, d: 10.0, i: 0.01, i_clamp: 3.0}
+
+  finger_1_joint:  {p: 50.0, d: 1.0, i: 0.01, i_clamp: 1.0}
+  finger_2_joint:  {p: 50.0, d: 1.0, i: 0.01, i_clamp: 1.0}

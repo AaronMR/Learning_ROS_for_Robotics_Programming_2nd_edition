@@ -1,0 +1,298 @@
+<?xml version="1.0"?>
+<robot name="origins">
+	<link name="base_link">
+   		<visual>
+     			<geometry>
+       				<box size="0.2 .3 .1"/>
+     			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0.05"/>
+			<material name="white">
+				<color rgba="1 1 1 1"/>
+			</material>
+   		</visual>
+		<collision>
+			<geometry>
+       				<box size="0.2 .3 0.1"/>
+			</geometry>
+		</collision>
+		<inertial>
+			<mass value="100"/>
+	 		<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+		</inertial>
+				
+ 	</link>
+
+ 	<link name="wheel_1">
+   		<visual>
+     			<geometry>
+       				<cylinder length="0.05" radius="0.05"/>
+     			</geometry>
+			<origin rpy="0 1.5 0" xyz="0.1 0.1 0"/>
+   			<material name="black">
+				<color rgba="0 0 0 1"/>
+			</material>
+		</visual>
+		<collision>
+			<geometry>
+       				<cylinder length="0.05" radius="0.05"/>
+			</geometry>
+		</collision>
+		<inertial>
+			<mass value="10"/>
+	 		<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+		</inertial>
+ 	</link>
+
+ 	<link name="wheel_2">
+   		<visual>
+     			<geometry>
+       				<cylinder length="0.05" radius="0.05"/>
+     			</geometry>
+			<origin rpy="0 1.5 0" xyz="-0.1 0.1 0"/>
+   			<material name="black"/>
+   		</visual>
+		<collision>
+			<geometry>
+       				<cylinder length="0.05" radius="0.05"/>
+			</geometry>
+		</collision>
+		<inertial>
+			<mass value="10"/>
+	 		<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+		</inertial>
+
+ 	</link>
+    
+ 	<link name="wheel_3">
+   		<visual>
+     			<geometry>
+       				<cylinder length="0.05" radius="0.05"/>
+     			</geometry>
+			<origin rpy="0 1.5 0" xyz="0.1 -0.1 0"/>
+   			<material name="black"/>
+   		</visual>
+		<collision>
+			<geometry>
+       				<cylinder length="0.05" radius="0.05"/>
+			</geometry>
+		</collision>
+		<inertial>
+			<mass value="10"/>
+	 		<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+		</inertial>
+ 	</link>
+
+ 	<link name="wheel_4">
+   		<visual>
+     			<geometry>
+       				<cylinder length="0.05" radius="0.05"/>
+     			</geometry>
+			<origin rpy="0 1.5 0" xyz="-0.1 -0.1 0"/>
+   			<material name="black"/>
+   		</visual>
+		<collision>
+			<geometry>
+       				<cylinder length="0.05" radius="0.05"/>
+			</geometry>
+		</collision>
+		<inertial>
+			<mass value="10"/>
+	 		<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+		</inertial>
+
+ 	</link>
+
+ 	<joint name="base_to_wheel1" type="fixed">
+   		<parent link="base_link"/>
+   		<child link="wheel_1"/>
+   		<origin xyz="0 0 0"/>
+ 	</joint>
+
+ 	<joint name="base_to_wheel2" type="fixed">
+   		<parent link="base_link"/>
+   		<child link="wheel_2"/>
+   		<origin xyz="0 0 0"/>
+ 	</joint>
+
+ 	<joint name="base_to_wheel3" type="fixed">
+   		<parent link="base_link"/>
+   		<child link="wheel_3"/>
+   		<origin xyz="0 0 0"/>
+ 	</joint>
+
+ 	<joint name="base_to_wheel4" type="fixed">
+   		<parent link="base_link"/>
+   		<child link="wheel_4"/>
+   		<origin xyz="0 0 0"/>
+ 	</joint>
+	<link name="arm_base">
+<visual>
+<geometry>
+<box size="0.1 .1 .1"/>
+</geometry>
+<origin rpy="0 0 0" xyz="0 0 0.1"/>
+<material name="white">
+<color rgba="1 1 1 1"/>
+</material>
+</visual>
+<collision>
+<geometry>
+<box size="0.1 .1 .1"/>
+</geometry>
+</collision>
+<inertial>
+<mass value="1"/>
+<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+</inertial>
+</link>
+<joint name="base_to_arm_base" type="continuous">
+<parent link="base_link"/>
+<child link="arm_base"/>
+<axis xyz="0 0 1"/>
+<origin xyz="0 0 0"/>
+</joint>
+<link name="arm_1">
+<visual>
+<geometry>
+<box size="0.05 .05 0.5"/>
+</geometry>
+<origin rpy="0 0 0" xyz="0 0 0.25"/>
+<material name="white">
+<color rgba="1 1 1 1"/>
+</material>
+</visual>
+<collision>
+<geometry>
+<box size="0.05 .05 0.5"/>
+</geometry>
+</collision>
+<inertial>
+<mass value="1"/>
+<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+</inertial>
+</link>
+<joint name="arm_1_to_arm_base" type="revolute">
+<parent link="arm_base"/>
+<child link="arm_1"/>
+<axis xyz="1 0 0"/>
+<origin xyz="0 0 0.15"/>
+<limit effort ="1000.0" lower="-1.0" upper="1.0" velocity="0.5"/>
+</joint>
+<link name="arm_2">
+<visual>
+<geometry>
+<box size="0.05 0.05 0.5"/>
+</geometry>
+<origin rpy="0 0 0" xyz="0.06 0 0.15"/>
+<material name="white">
+<color rgba="1 1 1 1"/>
+</material>
+</visual>
+<collision>
+<geometry>
+<box size="0.05 .05 0.5"/>
+</geometry>
+</collision>
+<inertial>
+<mass value="1"/>
+<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+</inertial>
+</link>
+<joint name="arm_2_to_arm_1" type="revolute">
+<parent link="arm_1"/>
+<child link="arm_2"/>
+<axis xyz="1 0 0"/>
+<origin xyz="0.0 0 0.45"/>
+<limit effort ="1000.0" lower="-2.5" upper="2.5" velocity="0.5"/>
+</joint>
+<joint name="left_gripper_joint" type="revolute">
+<axis xyz="0 0 1"/>
+<limit effort="1000.0" lower="0.0" upper="0.548" velocity="0.5"/>
+<origin rpy="0 -1.57 0" xyz="0.06 0 0.4"/>
+<parent link="arm_2"/>
+<child link="left_gripper"/>
+</joint>
+<link name="left_gripper">
+<visual>
+<origin rpy="0 0 0" xyz="0 0 0"/>
+<geometry>
+<mesh filename="package://pr2_description/meshes/gripper_v0/l_finger.dae"/>
+</geometry>
+</visual>
+<collision>
+<geometry>
+<box size="0.1 .1 .1"/>
+</geometry>
+</collision>
+<inertial>
+<mass value="1"/>
+<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+</inertial>
+</link>
+<joint name="left_tip_joint" type="fixed">
+<parent link="left_gripper"/>
+<child link="left_tip"/>
+</joint>
+<link name="left_tip">
+<visual>
+<origin rpy="0.0 0 0" xyz="0.09137 0.00495 0"/>
+<geometry>
+<mesh filename="package://pr2_description/meshes/gripper_v0/l_finger_tip.dae"/>
+</geometry>
+</visual>
+<collision>
+<geometry>
+<box size="0.1 .1 .1"/>
+</geometry>
+</collision>
+<inertial>
+<mass value="1"/>
+<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+</inertial>
+</link>
+<joint name="right_gripper_joint" type="revolute">
+<axis xyz="0 0 -1"/>
+<limit effort="1000.0" lower="0.0" upper="0.548" velocity="0.5"/>
+<origin rpy="0 -1.57 0" xyz="0.06 0 0.4"/>
+<parent link="arm_2"/>
+<child link="right_gripper"/>
+</joint>
+<link name="right_gripper">
+<visual>
+<origin rpy="-3.1415 0 0" xyz="0 0 0"/>
+<geometry>
+<mesh filename="package://pr2_description/meshes/gripper_v0/l_finger.dae"/>
+</geometry>
+</visual>
+<collision>
+<geometry>
+<box size="0.1 .1 .1"/>
+</geometry>
+</collision>
+<inertial>
+<mass value="1"/>
+<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+</inertial>
+</link>
+<joint name="right_tip_joint" type="fixed">
+<parent link="right_gripper"/>
+<child link="right_tip"/>
+</joint>
+<link name="right_tip">
+<visual>
+<origin rpy="-3.1415 0 0" xyz="0.09137 0.00495 0"/>
+<geometry>
+<mesh filename="package://pr2_description/meshes/gripper_v0/l_finger_tip.dae"/>
+</geometry>
+</visual>
+<collision>
+<geometry>
+<box size="0.1 .1 .1"/>
+</geometry>
+</collision>
+<inertial>
+<mass value="1"/>
+<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+</inertial>
+</link>
+</robot>

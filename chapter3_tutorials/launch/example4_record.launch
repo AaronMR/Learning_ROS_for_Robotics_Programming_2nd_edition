@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+  <!-- Example 4 -->
+  <node pkg="chapter3_tutorials" type="example4" name="example4"
+        output="screen"/>
+
+  <!-- Bag record -->
+  <node pkg="rosbag" type="record" name="bag_record"
+        args="/temp /accel"/>
+</launch>
+

@@ -1,0 +1,29 @@
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="gripper_gazebo">
+    <!-- Friction (in simulation) -->
+    <gazebo reference="finger_1_link">
+      <mu1>0.9</mu1>
+      <mu2>0.9</mu2>
+    </gazebo>
+    <gazebo reference="finger_2_link">
+      <mu1>0.9</mu1>
+      <mu2>0.9</mu2>
+    </gazebo>
+
+    <!-- Damping (in simulation) -->
+    <gazebo reference="finger_1_joint">
+      <implicitSpringDamper>true</implicitSpringDamper>
+    </gazebo>
+    <gazebo reference="finger_2_joint">
+      <implicitSpringDamper>true</implicitSpringDamper>
+    </gazebo>
+
+    <!-- Color (in simulation) -->
+    <gazebo reference="finger_1_link">
+      <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="finger_2_link">
+      <material>Gazebo/Black</material>
+    </gazebo>
+  </xacro:macro>
+</robot>

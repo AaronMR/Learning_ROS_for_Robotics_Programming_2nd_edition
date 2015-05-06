@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+  <arg name="registered" default="true"/>
+
+  <!-- Run Kinect driver. -->
+  <include file="$(find openni_launch)/launch/openni.launch">
+    <rosparam file="$(find chapter5_tutorials)/config/fovis_demo/openni_kinect_hw_registered.yaml" command="load"/>
+  </include>
+</launch>
+

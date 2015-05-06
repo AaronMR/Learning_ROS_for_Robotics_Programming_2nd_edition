@@ -1,0 +1,5 @@
+<launch>
+  <include file="$(find rosbook_arm_gazebo)/launch/rosbook_arm_gazebo.launch">
+    <arg name="world" default="empty"/>
+  </include>
+</launch>

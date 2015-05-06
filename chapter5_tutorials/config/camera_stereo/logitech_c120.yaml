@@ -1,0 +1,23 @@
+# Example OpenCV Logitech Webcam C120 camera parameters
+
+# Parameters, according with OpenCV VideoCapture::set method.
+camera_index_left: 1
+camera_index_right: 2
+camera_name: logitech_c120
+frame_width: 640
+frame_height: 480
+fps: 7.5
+# Check available pixel formats with (e.g. for /dev/video0):
+# v4l2-ctl -d /dev/video0 --list-formats
+# Typical values are: YUYV, MJPG (compressed)
+fourcc: YUYV
+brightness: 0.2
+contrast: 0.1
+saturation: 0.1
+hue: 0.
+gain: 0.
+exposure: 0.
+frame_id: stereo_optical
+camera_info_url_left: package://chapter5_tutorials/config/camera_stereo/${NAME}.yaml
+camera_info_url_right: package://chapter5_tutorials/config/camera_stereo/${NAME}.yaml
+

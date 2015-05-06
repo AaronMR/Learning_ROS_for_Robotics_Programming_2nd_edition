@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+  <!-- Logger config -->
+  <env name="ROSCONSOLE_CONFIG_FILE"
+       value="$(find chapter3_tutorials)/config/chapter3_tutorials.config"/>
+
+  <!-- Example 1 -->
+  <node pkg="chapter3_tutorials" type="example1" name="example1"
+        output="screen" launch-prefix="valgrind"/>
+</launch>
+

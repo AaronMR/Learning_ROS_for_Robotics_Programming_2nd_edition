@@ -1,0 +1,22 @@
+play_motion:
+  motions:
+    grasp:
+      joints: [shoulder_joint, rotor_0_joint, upper_arm_joint, rotor_1_joint, forearm_joint, rotor_2_joint, tool_joint,
+               finger_1_joint, finger_2_joint]
+      points:
+      - positions: [0.0, 0.0, 0.0, 0.0, 1.57, 0.0, 0.0, 0.0, 0.0]
+        time_from_start: 0.0
+      meta:
+        name: Grasp
+        usage: posture
+        description: Arm in grasping position, with elbow at 90 degrees.
+    home:
+      joints: [shoulder_joint, rotor_0_joint, upper_arm_joint, rotor_1_joint, forearm_joint, rotor_2_joint, tool_joint,
+               finger_1_joint, finger_2_joint]
+      points:
+      - positions: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        time_from_start: 0.0
+      meta:
+        name: Home
+        usage: posture
+        description: Arm up and completely stretched.

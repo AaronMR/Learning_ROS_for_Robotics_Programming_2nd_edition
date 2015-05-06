@@ -1,0 +1,38 @@
+# Example firewire camera parameters
+
+# Parameters set for Sony 3.5mm 1:1.4 1/2" (aperture, focus marked with screw)
+guid: 00b09d0100ab1324          # (defaults to first camera on bus)
+iso_speed: 800  # IEEE1394b
+video_mode: format7_mode0   # 1384x1036 @ 30fps bayer pattern
+# Note that frame_rate is overwritten by frame_rate_feature; some useful values:
+# 21fps (480)
+frame_rate: 21 # max fps (Hz)
+auto_frame_rate_feature: 3 # Manual (3)
+frame_rate_feature: 480
+format7_color_coding: raw8  # for bayer (we can use others, even rgb8 directly)
+# With raw8, we don't need to configure bayer pattern and method, actually we
+# cannot change them
+bayer_pattern: rggb
+bayer_method: HQ
+auto_brightness: 3 # Manual (3)
+brightness: 0
+auto_exposure: 3 # Manual (3)
+exposure: 350
+auto_gain: 3 # Manual (3)
+gain: 700
+# We cannot set gamma manually in ROS (diamondback), so we switch it off
+auto_gamma: 0 # Off (0)
+#gamma: 1024    # gamma 1
+auto_saturation: 3 # Manual (3)
+saturation: 1000
+auto_sharpness: 3 # Manual (3)
+sharpness: 1000
+auto_shutter: 3 # Manual (3)
+#shutter: 1000 # = 10ms
+shutter: 1512 # = 20ms (1/50Hz), max. in 30fps
+auto_white_balance: 3 # Manual (3)
+white_balance_BU: 820
+white_balance_RV: 520
+frame_id: firewire_camera
+camera_info_url: package://chapter5_tutorials/config/firewire_camera/calibration_firewire_camera.yaml
+

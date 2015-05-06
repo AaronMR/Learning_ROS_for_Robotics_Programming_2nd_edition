@@ -1,0 +1,40 @@
+arm_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+    - shoulder_joint
+    - rotor_0_joint
+    - upper_arm_joint
+    - rotor_1_joint
+    - forearm_joint
+    - rotor_2_joint
+    - tool_joint
+
+  constraints:
+    goal_time: &goal_time_constraint 2.0
+    shoulder_joint:
+      goal: &goal_pos_constraint 0.3
+    rotor_0_joint:
+      goal: *goal_pos_constraint
+    upper_arm_joint:
+      goal: *goal_pos_constraint
+    rotor_1_joint:
+      goal: *goal_pos_constraint
+    forearm_joint:
+      goal: *goal_pos_constraint
+    rotor_2_joint:
+      goal: *goal_pos_constraint
+    tool_joint:
+      goal: *goal_pos_constraint
+
+gripper_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+    - finger_1_joint
+    - finger_2_joint
+
+  constraints:
+    goal_time: *goal_time_constraint
+    finger_1_joint:
+      goal: *goal_pos_constraint
+    finger_2_joint:
+      goal: *goal_pos_constraint

@@ -1,0 +1,17 @@
+(gdb) r
+Starting program: /home/enrique/dev/rosbook/chapter3_tutorials/bin/example1 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[New Thread 0x7ffff2664700 (LWP 3204)]
+[New Thread 0x7ffff1e63700 (LWP 3205)]
+[New Thread 0x7ffff1662700 (LWP 3206)]
+[New Thread 0x7ffff0e61700 (LWP 3211)]
+[DEBUG] [1356342615.325647326]: This is a simple DEBUG message!
+[DEBUG] [1356342615.326124607]: This is a DEBUG message with an argument: 3.140000
+[DEBUG] [1356342615.326254667]: This is DEBUG stream message with an argument: 3.14
+[Thread 0x7ffff0e61700 (LWP 3211) exited]
+[Thread 0x7ffff1662700 (LWP 3206) exited]
+[Thread 0x7ffff2664700 (LWP 3204) exited]
+[Thread 0x7ffff1e63700 (LWP 3205) exited]
+[Inferior 1 (process 3200) exited normally]
+

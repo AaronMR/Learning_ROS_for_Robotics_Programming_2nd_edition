@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package>
+  <name>rosbook_arm_gazebo</name>
+  <version>0.0.0</version>
+  <description>ROS book arm gazebo simulation</description>
+
+  <maintainer email="enrique.fernandez.perdomo@gmail.com">Enrique Fernandez</maintainer>
+  <author email="enrique.fernandez.perdomo@gmail.com">Enrique Fernandez</author>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <run_depend>gazebo_ros</run_depend>
+  <run_depend>rosbook_arm_bringup</run_depend>
+  <run_depend>rosbook_arm_controller_configuration_gazebo</run_depend>
+  <run_depend>rosbook_arm_description</run_depend>
+  <run_depend>rosbook_arm_hardware_gazebo</run_depend>
+</package>

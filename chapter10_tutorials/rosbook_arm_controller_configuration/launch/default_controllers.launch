@@ -1,0 +1,11 @@
+<launch>
+  <!-- Joint state controller -->
+  <rosparam file="$(find joint_state_controller)/joint_state_controller.yaml" command="load"/>
+
+  <!-- Default controllers -->
+  <node pkg="controller_manager" type="spawner" name="default_controllers_spawner"
+        args="joint_state_controller
+              arm_controller
+              gripper_controller"/>
+</launch>
+

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+  <!-- Arguments -->
+  <!-- Show video output (both RAW and rectified) -->
+  <arg name="view" default="false"/>
+
+  <!-- Camera driver -->
+  <node pkg="usb_cam" type="usb_cam_node" name="camera"/>
+
+  <!-- Show video output -->
+  <group if="$(arg view)">
+    <!-- Image viewer (non-rectified image) -->
+    <node pkg="image_view" type="image_view" name="image_raw">
+      <remap from="image" to="camera/image_raw"/>
+    </node>
+  </group>
+</launch>
+

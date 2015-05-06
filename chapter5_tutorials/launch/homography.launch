@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+  <!-- Usage:
+  roslaunch chapter5_tutorials homography.launch -->
+
+  <!-- Logger config -->
+  <env name="ROSCONSOLE_CONFIG_FILE"
+       value="$(find chapter5_tutorials)/config/chapter5_tutorials.config"/>
+
+  <include file="$(find chapter5_tutorials)/launch/camera.launch"/>
+
+  <node pkg="chapter5_tutorials" type="homography" name="homography"
+        output="screen"/>
+</launch>
+

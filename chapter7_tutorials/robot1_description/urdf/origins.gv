@@ -1,0 +1,38 @@
+digraph G {
+node [shape=box];
+"base_link" [label="base_link"];
+"arm_base" [label="arm_base"];
+"arm_1" [label="arm_1"];
+"arm_2" [label="arm_2"];
+"left_gripper" [label="left_gripper"];
+"left_tip" [label="left_tip"];
+"right_gripper" [label="right_gripper"];
+"right_tip" [label="right_tip"];
+"wheel_1" [label="wheel_1"];
+"wheel_2" [label="wheel_2"];
+"wheel_3" [label="wheel_3"];
+"wheel_4" [label="wheel_4"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"base_link" -> "base_to_arm_base" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"base_to_arm_base" -> "arm_base"
+"arm_base" -> "arm_1_to_arm_base" [label="xyz: 0 0 0.15 \nrpy: 0 -0 0"]
+"arm_1_to_arm_base" -> "arm_1"
+"arm_1" -> "arm_2_to_arm_1" [label="xyz: 0 0 0.45 \nrpy: 0 -0 0"]
+"arm_2_to_arm_1" -> "arm_2"
+"arm_2" -> "left_gripper_joint" [label="xyz: 0.06 0 0.4 \nrpy: 0 -1.57 0"]
+"left_gripper_joint" -> "left_gripper"
+"left_gripper" -> "left_tip_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"left_tip_joint" -> "left_tip"
+"arm_2" -> "right_gripper_joint" [label="xyz: 0.06 0 0.4 \nrpy: 0 -1.57 0"]
+"right_gripper_joint" -> "right_gripper"
+"right_gripper" -> "right_tip_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"right_tip_joint" -> "right_tip"
+"base_link" -> "base_to_wheel1" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"base_to_wheel1" -> "wheel_1"
+"base_link" -> "base_to_wheel2" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"base_to_wheel2" -> "wheel_2"
+"base_link" -> "base_to_wheel3" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"base_to_wheel3" -> "wheel_3"
+"base_link" -> "base_to_wheel4" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"base_to_wheel4" -> "wheel_4"
+}

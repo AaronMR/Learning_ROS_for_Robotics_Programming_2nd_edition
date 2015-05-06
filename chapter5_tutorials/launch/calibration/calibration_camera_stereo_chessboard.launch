@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+  <!-- Camera params (config) -->
+  <arg name="params" default="$(find chapter5_tutorials)/config/camera_stereo/logitech_c120.yaml"/>
+
+  <!-- Camera driver -->
+  <node pkg="chapter5_tutorials" type="camera_stereo" name="stereo">
+    <rosparam file="$(arg params)" command="load"/>
+  </node>
+
+  <!-- Camera image processing (color) -->
+  <!-- <node ns="stereo" pkg="stereo_image_proc" type="stereo_image_proc" name="stereo_image_proc"/> -->
+
+  <!-- Calibration tool, for a calibration pattern of 8x6 inner squares of 3cm
+ -->
+  <node pkg="camera_calibration" type="cameracalibrator.py"
+        name="cameracalibrator" args="--size 8x6 --square 0.030"
+        output="screen">
+    <remap from="left" to="stereo/left/image_raw"/>
+    <remap from="right" to="stereo/right/image_raw"/>
+    <remap from="left_camera" to="stereo/left"/>
+    <remap from="right_camera" to="stereo/right"/>
+  </node>
+</launch>
+

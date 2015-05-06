@@ -1,0 +1,12 @@
+# Example USB logitech camera parameters
+
+# Parameters
+video_device: /dev/video0
+image_width: 640
+image_height: 480
+pixel_format: mjpeg
+io_method: mmap
+camera_frame_id: usb_cam
+frame_id: usb_cam
+camera_info_url:
+

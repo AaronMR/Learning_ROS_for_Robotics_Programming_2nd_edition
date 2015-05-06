@@ -1,0 +1,235 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" 
+ 	xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+    	xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+    	xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+	name="robot1_xacro">
+
+
+	<xacro:property name="length_wheel" value="0.05" />
+	<xacro:property name="radius_wheel" value="0.05" />
+	<xacro:macro name="default_inertial" params="mass">
+               <inertial>
+                       <mass value="${mass}" />
+                       <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+                                iyy="1.0" iyz="0.0"
+                                izz="1.0" />
+               </inertial>
+	</xacro:macro>
+
+	<link name="base_footprint">
+   		<visual>
+			<geometry>
+      				<box size="0.001 0.001 0.001"/>
+     			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+   		</visual>
+		<xacro:default_inertial mass="0.0001"/>
+ 	</link>
+
+	<gazebo reference="base_footprint">
+		<material>Gazebo/Green</material>
+		<turnGravityOff>false</turnGravityOff>
+	</gazebo>
+
+	<joint name="base_footprint_joint" type="fixed">
+		<origin xyz="0 0 0" />
+		<parent link="base_footprint" />
+		<child link="base_link" />
+	</joint>
+
+
+	<link name="base_link">
+   		<visual>
+			<geometry>
+      				<box size="0.2 .3 .1"/>
+     			</geometry>
+			<origin rpy="0 0 1.54" xyz="0 0 0.05"/>
+			<material name="white">
+				<color rgba="1 1 1 1"/>
+			</material>
+   		</visual>
+		<collision>
+			<geometry>
+       				<box size="0.2 .3 0.1"/>
+			</geometry>
+		</collision>
+		<xacro:default_inertial mass="10"/>
+ 	</link>
+
+ 	<link name="wheel_1">
+   		<visual>
+     			<geometry>
+       				<cylinder length="${length_wheel}" radius="${radius_wheel}"/>
+     			</geometry>
+			<!-- <origin rpy="0 1.5 0" xyz="0.1 0.1 0"/> -->
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+   			<material name="black">
+				<color rgba="0 0 0 1"/>
+			</material>
+		</visual>
+		<collision>
+			<geometry>
+       				<cylinder length="${length_wheel}" radius="${radius_wheel}"/>
+			</geometry>
+		</collision>
+		<xacro:default_inertial mass="1"/>
+ 	</link>
+
+ 	<link name="wheel_2">
+   		<visual>
+     			<geometry>
+       				<cylinder length="${length_wheel}" radius="${radius_wheel}"/>
+     			</geometry>
+			<!-- <origin rpy="0 1.5 0" xyz="-0.1 0.1 0"/> -->
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+   			<material name="black"/>
+   		</visual>
+		<collision>
+			<geometry>
+       				<cylinder length="${length_wheel}" radius="${radius_wheel}"/>
+			</geometry>
+		</collision>
+		<xacro:default_inertial mass="1"/>
+
+ 	</link>
+    
+ 	<link name="wheel_3">
+   		<visual>
+     			<geometry>
+       				<cylinder length="${length_wheel}" radius="${radius_wheel}"/>
+     			</geometry>
+			<!-- <origin rpy="0 1.5 0" xyz="0.1 -0.1 0"/> -->
+
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+   			<material name="black"/>
+   		</visual>
+		<collision>
+			<geometry>
+       				<cylinder length="${length_wheel}" radius="${radius_wheel}"/>
+			</geometry>
+		</collision>
+		<xacro:default_inertial mass="1"/>
+ 	</link>
+
+ 	<link name="wheel_4">
+   		<visual>
+     			<geometry>
+       				<cylinder length="${length_wheel}" radius="${radius_wheel}"/>
+     			</geometry>
+		<!--	<origin rpy="0 1.5 0" xyz="-0.1 -0.1 0"/> -->
+			<origin rpy="0 0 0" xyz="0 0 0" />
+   			<material name="black"/>
+   		</visual>
+		<collision>
+			<geometry>
+       				<cylinder length="${length_wheel}" radius="${radius_wheel}"/>
+			</geometry>
+		</collision>
+		<xacro:default_inertial mass="1"/>
+
+ 	</link>
+
+
+
+ <joint name="base_to_wheel1" type="continuous">
+   <parent link="base_link"/>
+   <child link="wheel_1"/>
+   <origin rpy="1.5707 0 0" xyz="0.1 0.15 0"/>
+   <axis xyz="0 0 1" />
+ </joint>
+
+ <joint name="base_to_wheel2" type="continuous">
+   <axis xyz="0 0 1" />
+   <anchor xyz="0 0 0" />
+   <limit effort="100" velocity="100" />
+   <parent link="base_link"/>
+   <child link="wheel_2"/>
+   <origin rpy="1.5707 0 0" xyz="-0.1 0.15 0"/>
+</joint>
+
+ <joint name="base_to_wheel3" type="continuous">
+   <parent link="base_link"/>
+   <axis xyz="0 0 1" />
+   <child link="wheel_3"/>
+   <origin rpy="1.5707 0 0" xyz="0.1 -0.15 0"/>
+ </joint>
+
+ <joint name="base_to_wheel4" type="continuous">
+   <parent link="base_link"/>
+   <axis xyz="0 0 1" />
+   <child link="wheel_4"/>
+   <origin rpy="1.5707 0 0" xyz="-0.1 -0.15 0"/>
+ </joint>
+
+<!--
+  <gazebo reference="wheel2">
+    <mu1 value="100.0"/>
+    <mu2 value="100.0"/>
+    <kp value="1000000.0"/>
+    <kd value="1.0"/>
+    <material>Erratic/Grey</material>
+  </gazebo>
+  <gazebo reference="wheel2">
+    <material>Erratic/White</material>
+  </gazebo>
+  <transmission name="wheel2_trans" type="pr2_mechanism_model/SimpleTransmission">
+    <actuator name="wheel2_motor"/>
+    <joint name="base_to_wheel2"/>
+    <mechanicalReduction>1.0</mechanicalReduction>
+  </transmission>
+-->
+<!--
+  <gazebo reference="wheel4">
+    <mu1 value="100.0"/>
+    <mu2 value="100.0"/>
+    <kp value="1000000.0"/>
+    <kd value="1.0"/>
+    <material>Erratic/Grey</material>
+  </gazebo>
+  <gazebo reference="wheel4">
+    <material>Erratic/White</material>
+  </gazebo>
+  <transmission name="wheel4_trans" type="pr2_mechanism_model/SimpleTransmission">
+    <actuator name="wheel4_motor"/>
+    <joint name="base_to_wheel4"/>
+    <mechanicalReduction>1.0</mechanicalReduction>
+  </transmission>
+-->
+
+  <gazebo>
+
+  	<controller:diffdrive_plugin name="differential_drive_controller" plugin="libdiffdrive_plugin.so">
+                <alwaysOn>true</alwaysOn>
+                <update>100</update>
+                <updateRate>100.0</updateRate>
+                <leftJoint>base_to_wheel4</leftJoint>
+                <rightJoint>base_to_wheel1</rightJoint>
+                <wheelSeparation>0.33</wheelSeparation>
+                <wheelDiameter>0.1</wheelDiameter>
+                <torque>5</torque>
+                <interface:position name="position_iface_0"/>
+                <topicName>cmd_vel</topicName>
+  	</controller:diffdrive_plugin>
+
+<!--
+	<controller:gazebo_ros_p3d name="p3d_base_controller" plugin="libgazebo_ros_p3d.so">
+                <alwaysOn>true</alwaysOn>
+                <updateRate>100.0</updateRate>
+                <bodyName>base_link</bodyName>
+                <topicName>base_pose_ground_truth</topicName>
+                <gaussianNoise>0.01</gaussianNoise>
+                <frameName>map</frameName>
+                <xyzOffsets>0 0 0</xyzOffsets>
+                <rpyOffsets>0 0 0</rpyOffsets>
+                <interface:position name="p3d_base_position"/>
+            </controller:gazebo_ros_p3d>
+-->
+  </gazebo>
+
+  <gazebo reference="base_link">
+  	<material>Erratic/BlueBrushedAluminum</material>
+  </gazebo>
+
+</robot>

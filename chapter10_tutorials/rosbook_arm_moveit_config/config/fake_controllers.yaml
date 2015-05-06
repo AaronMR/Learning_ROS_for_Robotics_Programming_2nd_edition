@@ -1,0 +1,14 @@
+controller_list:
+  - name: fake_arm_controller
+    joints:
+      - shoulder_joint
+      - rotor_0_joint
+      - upper_arm_joint
+      - rotor_1_joint
+      - forearm_joint
+      - rotor_2_joint
+      - tool_joint
+  - name: fake_gripper_controller
+    joints:
+      - finger_1_joint
+      - finger_2_joint

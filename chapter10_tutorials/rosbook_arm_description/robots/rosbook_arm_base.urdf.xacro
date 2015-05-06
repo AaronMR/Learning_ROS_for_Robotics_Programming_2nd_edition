@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"
+       name="rosbook_arm">
+
+  <!-- Base, arm and gripper -->
+  <xacro:include filename="$(find rosbook_arm_description)/urdf/base/base.urdf.xacro"/>
+  <xacro:include filename="$(find rosbook_arm_description)/urdf/arm/arm.urdf.xacro"/>
+  <xacro:include filename="$(find rosbook_arm_description)/urdf/gripper/gripper.urdf.xacro"/>
+
+  <!-- Generic simulator_gazebo plugins -->
+  <xacro:include filename="$(find rosbook_arm_description)/gazebo/gazebo.urdf.xacro"/>
+
+  <!-- Materials for visualization -->
+  <xacro:include filename="$(find rosbook_arm_description)/urdf/materials.urdf.xacro"/>
+
+  <!-- Define arm with gripper mounted on a base -->
+  <xacro:base name="base"/>
+  <xacro:arm parent="base"/>
+  <xacro:gripper parent="tool"/>
+</robot>

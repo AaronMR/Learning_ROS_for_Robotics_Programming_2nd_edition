@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+  <!-- Usage:
+  roslaunch chapter5_tutorials viso2_mono_odometer.launch -->
+
+  <!-- Logger config -->
+  <env name="ROSCONSOLE_CONFIG_FILE"
+       value="$(find chapter5_tutorials)/config/chapter5_tutorials.config"/>
+
+  <!-- Run monocular odometer. -->
+  <node name="mono_odometer" pkg="viso2_ros" type="mono_odometer" output="screen">
+    <remap from="image" to="/camera/image_rect"/>
+  </node>
+</launch>
+

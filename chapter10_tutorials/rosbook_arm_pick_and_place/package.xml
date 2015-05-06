@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<package>
+  <name>rosbook_arm_pick_and_place</name>
+  <version>0.0.0</version>
+  <description>ROS book arm Pick and Place</description>
+
+  <maintainer email="enrique.fernandez.perdomo@gmail.com">Enrique Fernandez</maintainer>
+  <author email="r0sw3l@gmail.com">Sam Pfeiffer</author>
+  <author email="enrique.fernandez.perdomo@gmail.com">Enrique Fernandez</author>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>actionlib</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>moveit_msgs</build_depend>
+  <build_depend>moveit_simple_grasps</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>tf</build_depend>
+  <build_depend>trajectory_msgs</build_depend>
+
+  <run_depend>actionlib</run_depend>
+  <run_depend>geometry_msgs</run_depend>
+  <run_depend>moveit_msgs</run_depend>
+  <run_depend>moveit_simple_grasps</run_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>tf</run_depend>
+  <run_depend>trajectory_msgs</run_depend>
+</package>

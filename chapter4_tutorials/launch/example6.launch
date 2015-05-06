@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+	<include file="$(find xsens_driver)/launch/xsens_driver.launch" />
+	<node pkg="turtlesim" type="turtlesim_node" name="sim"/>
+	<node pkg="chapter4_tutorials" type="c4_example6" name="c4_example6" />
+</launch>

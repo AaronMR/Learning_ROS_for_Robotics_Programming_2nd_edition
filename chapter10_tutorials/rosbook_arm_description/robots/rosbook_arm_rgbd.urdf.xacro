@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"
+       name="rosbook_arm">
+
+  <!-- Base, arm, gripper and RGB-D sensor -->
+  <xacro:include filename="$(find rosbook_arm_description)/urdf/base/base.urdf.xacro"/>
+  <xacro:include filename="$(find rosbook_arm_description)/urdf/arm/arm.urdf.xacro"/>
+  <xacro:include filename="$(find rosbook_arm_description)/urdf/gripper/gripper.urdf.xacro"/>
+  <xacro:include filename="$(find rosbook_arm_description)/urdf/sensors/xtion_pro_live.urdf.xacro"/>
+
+  <!-- Generic simulator_gazebo plugins -->
+  <xacro:include filename="$(find rosbook_arm_description)/gazebo/gazebo.urdf.xacro"/>
+
+  <!-- Materials for visualization -->
+  <xacro:include filename="$(find rosbook_arm_description)/urdf/materials.urdf.xacro"/>
+
+  <!-- Define arm with gripper mounted on a base -->
+  <xacro:base name="base"/>
+  <xacro:arm parent="base"/>
+  <xacro:gripper parent="tool"/>
+
+  <!-- Define RGB-D sensor -->
+  <xacro:xtion_pro_live name="rgbd_camera" parent="base">
+    <origin xyz="0.5 0 3.5" rpy="0 ${75.0 * deg_to_rad} 0"/>
+    <origin xyz="0 0 0" rpy="${-90.0 * deg_to_rad} 0 ${-90.0 * deg_to_rad}"/>
+  </xacro:xtion_pro_live>
+</robot>

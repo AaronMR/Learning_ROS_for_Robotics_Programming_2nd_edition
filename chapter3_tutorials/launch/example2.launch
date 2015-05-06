@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+  <!-- Example 2 -->
+  <node pkg="chapter3_tutorials" type="example2" name="example2"
+        output="screen"/>
+</launch>
+

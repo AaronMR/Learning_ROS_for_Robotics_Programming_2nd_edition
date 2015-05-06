@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<package>
+  <name>chapter3_tutorials</name>
+  <version>0.1.0</version>
+  <description>Chapter 3 tutorials.</description>
+
+  <maintainer email="enrique.fernandez.perdomo@gmail.com">Enrique Fernández</maintainer>
+  <author email="enrique.fernandez.perdomo@gmail.com">Enrique Fernández</author>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roscpp</build_depend>
+  <build_depend>message_generation</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>visualization_msgs</build_depend>
+  <build_depend>dynamic_reconfigure</build_depend>
+  <build_depend>driver_base</build_depend>
+  <build_depend>diagnostic_updater</build_depend>
+  <build_depend>cv_bridge</build_depend>
+  <build_depend>image_transport</build_depend>
+  <build_depend>libpcl-all-dev</build_depend>
+  <build_depend>pcl_conversions</build_depend>
+  <build_depend>interactive_markers</build_depend>
+
+  <run_depend>roscpp</run_depend>
+  <run_depend>message_runtime</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>geometry_msgs</run_depend>
+  <run_depend>sensor_msgs</run_depend>
+  <run_depend>visualization_msgs</run_depend>
+  <run_depend>dynamic_reconfigure</run_depend>
+  <run_depend>driver_base</run_depend>
+  <run_depend>diagnostic_updater</run_depend>
+  <run_depend>cv_bridge</run_depend>
+  <run_depend>image_transport</run_depend>
+  <run_depend>libpcl-all</run_depend>
+  <run_depend>pcl_conversions</run_depend>
+  <run_depend>interactive_markers</run_depend>
+</package>

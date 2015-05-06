@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+  <!-- Usage:
+  roslaunch chapter5_tutorials viso2_demo.launch -->
+
+  <!-- Logger config -->
+  <env name="ROSCONSOLE_CONFIG_FILE"
+       value="$(find chapter5_tutorials)/config/chapter5_tutorials.config"/>
+
+  <!-- Arguments -->
+  <!-- Bag file. -->
+  <arg name="bagdir" default="$(find chapter5_tutorials)/bag/viso2_demo"/>
+  <arg name="bagfile" default="$(arg bagdir)/amphoras-pool_2012-09-25-13-22-25_0.bag $(arg bagdir)/amphoras-pool_2012-09-25-13-22-59_1.bag $(arg bagdir)/amphoras-pool_2012-09-25-13-23-32_2.bag $(arg bagdir)/amphoras-pool_2012-09-25-13-24-06_3.bag $(arg bagdir)/amphoras-pool_2012-09-25-13-24-39_4.bag"/>
+  <!-- Camera name. -->
+  <arg name="camera" default="/stereo_down"/>
+  <!-- Disparity image params. -->
+  <arg name="disparity_params" default="$(find chapter5_tutorials)/config/viso2_demo/disparity.yaml"/>
+  <!-- Rviz display config. -->
+  <arg name="rviz_config" default="$(find chapter5_tutorials)/config/viso2_demo/rviz.rviz"/>
+  <!-- View camera stream. -->
+  <arg name="view" default="false"/>
+  <!-- Rviz (3D Point Cloud). -->
+  <arg name="rviz" default="false"/>
+  <!-- Config disparity image. -->
+  <arg name="config_disparity" default="false"/>
+  <!-- Save camera stream. -->
+  <arg name="save" default="false"/>
+  <!-- Visual Odometry. -->
+  <arg name="odometry" default="false"/>
+
+  <!-- Run demo. -->
+  <include file="$(find viso2_ros)/launch/demo.launch">
+    <arg name="bagfile" value="$(arg bagfile)"/>
+    <arg name="camera" value="$(arg camera)"/>
+    <arg name="disparity_params" value="$(arg disparity_params)"/>
+  </include>
+
+  <group if="$(arg view)">
+    <node name="view" pkg="image_view" type="stereo_view">
+      <remap from="stereo" to="$(arg camera)"/>
+      <remap from="image" to="image_rect_color"/>
+      <param name="autosize" value="false"/>
+    </node>
+  </group>
+
+  <group if="$(arg rviz)">
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_config)"/>
+  </group>
+
+  <group if="$(arg config_disparity)">
+      <node name="config_stereo_image_proc" pkg="dynamic_reconfigure" type="reconfigure_gui" args="$(arg camera)/stereo_image_proc"/>
+  </group>
+
+  <group if="$(arg save)">
+      <node name="record" pkg="rosbag" type="record" args="$(arg camera)/left/image_raw $(arg camera)/right/image_raw"/>
+  </group>
+
+  <group if="$(arg odometry)">
+    <include file="$(find chapter5_tutorials)/launch/visual_odometry/viso2_stereo_odometer.launch"/>
+  </group>
+</launch>
+

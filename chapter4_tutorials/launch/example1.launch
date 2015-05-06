@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<launch>
+	<node pkg="turtlesim" type="turtlesim_node" name="sim"/>
+	<node pkg="chapter4_tutorials" type="c4_example1" name="c4_example1" />
+	<param name="axis_linear" value="1" type="int" />
+	<param name="axis_angular" value="0" type="int" />
+	<node respawn="true" pkg="joy" type="joy_node" name="joy_node">
+	<param name="dev" type="string" value="/dev/input/js0" />
+    	<param name="deadzone" value="0.12" />
+	</node>
+</launch>

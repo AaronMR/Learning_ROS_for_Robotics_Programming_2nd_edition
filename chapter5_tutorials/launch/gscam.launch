@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+  <!-- Arguments -->
+  <!-- Show video output (both RAW and rectified) -->
+  <arg name="view" default="false"/>
+  <!-- Camera params (config) -->
+  <arg name="params" default="$(find chapter5_tutorials)/config/gscam/logitech.yaml"/>
+
+  <!-- Camera driver -->
+  <node pkg="gscam" type="gscam" name="camera">
+    <rosparam file="$(arg params)" command="load"/>
+    <param name="camera_parameters_file" value="$(find chapter5_tutorials)/config/gscam/calibration_gscam.yaml"/>
+  </node>
+
+  <!-- Show video output -->
+  <group if="$(arg view)">
+    <!-- Image viewer (non-rectified image) -->
+    <node pkg="image_view" type="image_view" name="image_raw">
+      <remap from="image" to="camera/image_raw"/>
+    </node>
+  </group>
+</launch>
+

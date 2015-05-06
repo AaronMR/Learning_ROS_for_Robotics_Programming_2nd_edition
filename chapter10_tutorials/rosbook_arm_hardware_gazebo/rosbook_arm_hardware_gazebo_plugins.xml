@@ -1,0 +1,11 @@
+<library path="lib/librosbook_arm_hardware_gazebo">
+
+  <class
+    name="rosbook_arm_hardware_gazebo/ROSBookArmHardwareGazebo"
+    type="rosbook_arm_hardware_gazebo::ROSBookArmHardwareGazebo"
+    base_class_type="gazebo_ros_control::RobotHWSim">
+    <description>
+      ROS Book arm simulation interface.
+    </description>
+  </class>
+</library>

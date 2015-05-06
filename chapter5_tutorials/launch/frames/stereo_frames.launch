@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+  <arg name="camera" default="stereo" />
+
+  <arg name="baseline/2" value="0.06"/>
+  <arg name="optical_translation" value="0 -$(arg baseline/2) 0"/>
+
+  <arg name="pi/2" value="1.5707963267948966"/>
+  <arg name="optical_rotation" value="-$(arg pi/2) 0 -$(arg pi/2)"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="$(arg camera)_link"
+        args="0 0 0.1 0 0 0 /base_link /$(arg camera) 100"/>  
+  <node pkg="tf" type="static_transform_publisher" name="$(arg camera)_optical_link"
+        args="$(arg optical_translation) $(arg optical_rotation) /$(arg camera) /$(arg camera)_optical 100"/>
+</launch>
+

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package>
+  <name>chapter10_tutorials</name>
+  <version>0.0.0</version>
+  <description>ROS book Chapter 10 tutorials - MoveIt!</description>
+
+  <maintainer email="enrique.fernandez.perdomo@gmail.com">Enrique Fernandez</maintainer>
+  <author email="enrique.fernandez.perdomo@gmail.com">Enrique Fernandez</author>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <run_depend>rosbook_arm_gazebo</run_depend>
+  <run_depend>rosbook_arm_pick_and_place</run_depend>
+
+  <export>
+     <metapackage/>
+   </export>
+</package>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+  <!-- Example 4 and 5 -->
+  <node pkg="chapter3_tutorials" type="example4" name="example4"
+        output="screen"/>
+  <node pkg="chapter3_tutorials" type="example5" name="example5"
+        output="screen"/>
+</launch>
+

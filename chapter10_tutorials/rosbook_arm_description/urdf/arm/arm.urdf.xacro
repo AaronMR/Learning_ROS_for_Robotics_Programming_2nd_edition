@@ -1,0 +1,301 @@
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find rosbook_arm_description)/urdf/deg_to_rad.xacro"/>
+  <xacro:include filename="$(find rosbook_arm_description)/urdf/inertia.xacro"/>
+  <xacro:include filename="$(find rosbook_arm_description)/urdf/arm/arm.transmission.xacro"/>
+  <xacro:include filename="$(find rosbook_arm_description)/urdf/arm/arm.gazebo.xacro"/>
+
+  <xacro:property name="arm_mass"     value="0.01"/>
+  <xacro:property name="arm_effort"   value="10.0"/>
+  <xacro:property name="arm_velocity" value="5.0"/>
+  <xacro:property name="arm_friction" value="0.0"/>
+  <xacro:property name="arm_damping"  value="0.7"/>
+  <xacro:property name="arm_eps"      value="0.01"/>
+
+  <xacro:macro name="arm" params="parent">
+    <link name="shoulder_link">
+      <visual>
+        <geometry>
+          <cylinder length="0.5" radius="0.25"/>
+        </geometry>
+        <origin xyz="0.0 0.0 0.25"/>
+        <material name="white"/>
+      </visual>
+
+      <collision>
+        <geometry>
+          <cylinder length="0.5" radius="0.25"/>
+        </geometry>
+        <origin xyz="0.0 0.0 0.25"/>
+      </collision>
+
+      <inertial>
+        <origin xyz="0.0 0.0 0.25"/>
+        <mass value="${arm_mass}"/>
+        <cylinder_inertia mass="${arm_mass}" radius="0.25" length="0.5"/>
+      </inertial>
+    </link>
+
+    <link name="upper_arm_link">
+      <visual>
+        <geometry>
+          <cylinder length="1" radius="0.25"/>
+        </geometry>
+        <origin xyz="0.0 0.0 0.5"/>
+        <material name="white"/>
+      </visual>
+
+      <collision>
+        <geometry>
+          <cylinder length="1" radius="0.25"/>
+        </geometry>
+        <origin xyz="0.0 0.0 0.5"/>
+      </collision>
+
+      <inertial>
+        <origin xyz="0.0 0.0 0.5"/>
+        <mass value="${arm_mass}"/>
+        <cylinder_inertia mass="${arm_mass}" radius="0.25" length="1"/>
+      </inertial>
+    </link>
+
+    <link name="forearm_link">
+      <visual>
+        <geometry>
+          <cylinder length="1" radius="0.25"/>
+        </geometry>
+        <origin xyz="0.0 0.0 0.5"/>
+        <material name="white"/>
+      </visual>
+
+      <collision>
+        <geometry>
+          <cylinder length="1" radius="0.25"/>
+        </geometry>
+        <origin xyz="0.0 0.0 0.5"/>
+      </collision>
+
+      <inertial>
+        <origin xyz="0.0 0.0 0.5"/>
+        <mass value="${arm_mass}"/>
+        <cylinder_inertia mass="${arm_mass}" radius="0.25" length="1"/>
+      </inertial>
+    </link>
+
+    <link name="rotor_0_link">
+      <visual>
+        <geometry>
+          <cylinder length="0.5" radius="0.25"/>
+        </geometry>
+        <origin xyz="0.0 0.0 0.5" rpy="1.57079633 0.0 0.0"/>
+        <material name="green"/>
+      </visual>
+
+      <collision>
+        <geometry>
+          <cylinder length="0.5" radius="0.25"/>
+        </geometry>
+        <origin xyz="0.0 0.0 0.5" rpy="1.57079633 0.0 0.0"/>
+      </collision>
+
+      <inertial>
+        <origin xyz="0.0 0.0 0.5" rpy="1.57079633 0.0 0.0"/>
+        <mass value="${arm_mass}"/>
+        <cylinder_inertia mass="${arm_mass}" radius="0.25" length="0.5"/>
+      </inertial>
+    </link>
+
+    <link name="rotor_1_link">
+      <visual>
+        <geometry>
+          <cylinder length="0.5" radius="0.25"/>
+        </geometry>
+        <origin xyz="0.0 0.0 0.5" rpy="1.57079633 0.0 0.0"/>
+        <material name="green"/>
+      </visual>
+
+      <collision>
+        <geometry>
+          <cylinder length="0.5" radius="0.25"/>
+        </geometry>
+        <origin xyz="0.0 0.0 0.5" rpy="1.57079633 0.0 0.0"/>
+      </collision>
+
+      <inertial>
+        <origin xyz="0.0 0.0 0.5" rpy="1.57079633 0.0 0.0"/>
+        <mass value="${arm_mass}"/>
+        <cylinder_inertia mass="${arm_mass}" radius="0.25" length="0.5"/>
+      </inertial>
+    </link>
+
+    <link name="rotor_2_link">
+      <visual>
+        <geometry>
+          <cylinder length="0.5" radius="0.25"/>
+        </geometry>
+        <origin xyz="0.0 0.0 0.5" rpy="1.57079633 0.0 0.0"/>
+        <material name="green"/>
+      </visual>
+
+      <collision>
+        <geometry>
+          <cylinder length="0.5" radius="0.25"/>
+        </geometry>
+        <origin xyz="0.0 0.0 0.5" rpy="1.57079633 0.0 0.0"/>
+      </collision>
+
+      <inertial>
+        <origin xyz="0.0 0.0 0.5" rpy="1.57079633 0.0 0.0"/>
+        <mass value="${arm_mass}"/>
+        <cylinder_inertia mass="${arm_mass}" radius="0.25" length="0.5"/>
+      </inertial>
+    </link>
+
+    <link name="tool_link">
+      <visual>
+        <geometry>
+          <cylinder length="0.5" radius="0.25"/>
+        </geometry>
+        <origin xyz="0.0 0.0 0.25"/>
+        <material name="white"/>
+      </visual>
+
+      <collision>
+        <geometry>
+          <cylinder length="0.5" radius="0.25"/>
+        </geometry>
+        <origin xyz="0.0 0.0 0.25"/>
+      </collision>
+
+      <inertial>
+        <origin xyz="0.0 0.0 0.25"/>
+        <mass value="${arm_mass}"/>
+        <cylinder_inertia mass="${arm_mass}" radius="0.25" length="0.5"/>
+      </inertial>
+    </link>
+
+    <joint name="shoulder_joint" type="revolute">
+      <parent link="${parent}_link"/>
+      <child link="shoulder_link"/>
+      <origin xyz="0.0 0.0 0.0"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="${arm_effort}"
+             lower="${-180.0 * deg_to_rad}" upper="${180.0 * deg_to_rad}"
+             velocity="${arm_velocity}"/>
+      <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
+
+      <safety_controller k_position="20"
+                         k_velocity="20"
+                         soft_lower_limit="${-180.0 * deg_to_rad + arm_eps}"
+                         soft_upper_limit="${ 180.0 * deg_to_rad - arm_eps}"/>
+    </joint>
+
+    <joint name="rotor_0_joint" type="revolute">
+      <parent link="shoulder_link"/>
+      <child link="rotor_0_link"/>
+      <origin xyz="0.0 0.0 0.0"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="${arm_effort}"
+             lower="${-120.0 * deg_to_rad}" upper="${120.0 * deg_to_rad}"
+             velocity="${arm_velocity}"/>
+      <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
+
+      <safety_controller k_position="20"
+                         k_velocity="20"
+                         soft_lower_limit="${-120.0 * deg_to_rad + arm_eps}"
+                         soft_upper_limit="${ 120.0 * deg_to_rad - arm_eps}"/>
+    </joint>
+
+    <joint name="upper_arm_joint" type="revolute">
+      <parent link="rotor_0_link"/>
+      <child link="upper_arm_link"/>
+      <origin xyz="0.0 0.0 0.5"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="${arm_effort}"
+             lower="${-180.0 * deg_to_rad}" upper="${180.0 * deg_to_rad}"
+             velocity="${arm_velocity}"/>
+      <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
+
+      <safety_controller k_position="20"
+                         k_velocity="20"
+                         soft_lower_limit="${-180.0 * deg_to_rad + arm_eps}"
+                         soft_upper_limit="${ 180.0 * deg_to_rad - arm_eps}"/>
+    </joint>
+
+    <joint name="rotor_1_joint" type="revolute">
+      <parent link="upper_arm_link"/>
+      <child link="rotor_1_link"/>
+      <origin xyz="0.0 0.0 0.5"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="${arm_effort}"
+             lower="${-120.0 * deg_to_rad}" upper="${120.0 * deg_to_rad}"
+             velocity="${arm_velocity}"/>
+      <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
+
+      <safety_controller k_position="20"
+                         k_velocity="20"
+                         soft_lower_limit="${-120.0 * deg_to_rad + arm_eps}"
+                         soft_upper_limit="${ 120.0 * deg_to_rad - arm_eps}"/>
+    </joint>
+
+    <joint name="forearm_joint" type="revolute">
+      <parent link="rotor_1_link"/>
+      <child link="forearm_link"/>
+      <origin xyz="0.0 0.0 0.5"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="${arm_effort}"
+             lower="${-180.0 * deg_to_rad}" upper="${180.0 * deg_to_rad}"
+             velocity="${arm_velocity}"/>
+      <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
+
+      <safety_controller k_position="20"
+                         k_velocity="20"
+                         soft_lower_limit="${-180.0 * deg_to_rad + arm_eps}"
+                         soft_upper_limit="${ 180.0 * deg_to_rad - arm_eps}"/>
+    </joint>
+
+    <joint name="rotor_2_joint" type="revolute">
+      <parent link="forearm_link"/>
+      <child link="rotor_2_link"/>
+      <origin xyz="0.0 0.0 0.5"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="${arm_effort}"
+             lower="${-120.0 * deg_to_rad}" upper="${120.0 * deg_to_rad}"
+             velocity="${arm_velocity}"/>
+      <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
+
+      <safety_controller k_position="20"
+                         k_velocity="20"
+                         soft_lower_limit="${-120.0 * deg_to_rad + arm_eps}"
+                         soft_upper_limit="${ 120.0 * deg_to_rad - arm_eps}"/>
+    </joint>
+
+    <joint name="tool_joint" type="revolute">
+      <parent link="rotor_2_link"/>
+      <child link="tool_link"/>
+      <origin xyz="0.0 0.0 0.5"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="${arm_effort}"
+             lower="${-180.0 * deg_to_rad}" upper="${180.0 * deg_to_rad}"
+             velocity="${arm_velocity}"/>
+      <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
+
+      <safety_controller k_position="20"
+                         k_velocity="20"
+                         soft_lower_limit="${-180.0 * deg_to_rad + arm_eps}"
+                         soft_upper_limit="${ 180.0 * deg_to_rad - arm_eps}"/>
+    </joint>
+
+    <!-- Transmissions -->
+    <arm_simple_transmission name="shoulder"  reduction="1.0"/>
+    <arm_simple_transmission name="rotor_0"   reduction="1.0"/>
+    <arm_simple_transmission name="upper_arm" reduction="1.0"/>
+    <arm_simple_transmission name="rotor_1"   reduction="1.0"/>
+    <arm_simple_transmission name="forearm"   reduction="1.0"/>
+    <arm_simple_transmission name="rotor_2"   reduction="1.0"/>
+    <arm_simple_transmission name="tool"      reduction="1.0"/>
+
+    <!-- Simulation (gazebo) -->
+    <arm_gazebo/>
+  </xacro:macro>
+</robot>

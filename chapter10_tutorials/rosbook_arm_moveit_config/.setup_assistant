@@ -1,0 +1,8 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: rosbook_arm_description
+    relative_path: robots/rosbook_arm_rgbd.urdf.xacro
+  SRDF:
+    relative_path: config/rosbook_arm.srdf
+  CONFIG:
+    generated_timestamp: 1433090399

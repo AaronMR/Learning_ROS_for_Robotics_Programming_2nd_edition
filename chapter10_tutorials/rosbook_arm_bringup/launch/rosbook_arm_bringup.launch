@@ -1,0 +1,17 @@
+<launch>
+  <!-- Load default controllers -->
+  <include file="$(find rosbook_arm_controller_configuration)/launch/default_controllers.launch"/>
+
+  <!-- Robot state publisher -->
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+    <param name="publish_frequency" value="50.0"/>
+    <param name="tf_prefix"         value=""/>
+  </node>
+
+  <!-- Motion planning -->
+  <include file="$(find rosbook_arm_moveit_config)/launch/move_group.launch"/>
+
+  <!-- Pre-recorded motions executor -->
+  <include file="$(find rosbook_arm_bringup)/launch/play_motion.launch"/>
+</launch>
+

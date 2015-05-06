@@ -1,0 +1,47 @@
+joint_limits:
+  shoulder_joint:
+    has_velocity_limits: true
+    max_velocity: &max_arm_vel 5.0
+    has_acceleration_limits: false
+    max_acceleration: &max_arm_acc 0
+  rotor_0_joint:
+    has_velocity_limits: true
+    max_velocity: *max_arm_vel
+    has_acceleration_limits: false
+    max_acceleration: *max_arm_acc
+  upper_arm_joint:
+    has_velocity_limits: true
+    max_velocity: *max_arm_vel
+    has_acceleration_limits: false
+    max_acceleration: *max_arm_acc
+  rotor_1_joint:
+    has_velocity_limits: true
+    max_velocity: *max_arm_vel
+    has_acceleration_limits: false
+    max_acceleration: *max_arm_acc
+  forearm_joint:
+    has_velocity_limits: true
+    max_velocity: *max_arm_vel
+    has_acceleration_limits: false
+    max_acceleration: *max_arm_acc
+  rotor_2_joint:
+    has_velocity_limits: true
+    max_velocity: *max_arm_vel
+    has_acceleration_limits: false
+    max_acceleration: *max_arm_acc
+  tool_joint:
+    has_velocity_limits: true
+    max_velocity: *max_arm_vel
+    has_acceleration_limits: false
+    max_acceleration: *max_arm_acc
+
+  finger_1_joint:
+    has_velocity_limits: true
+    max_velocity: &max_finger_vel 5.0
+    has_acceleration_limits: false
+    max_acceleration: &max_finger_acc 0
+  finger_2_joint:
+    has_velocity_limits: true
+    max_velocity: *max_finger_vel
+    has_acceleration_limits: false
+    max_acceleration: *max_finger_acc

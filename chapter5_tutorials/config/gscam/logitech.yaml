@@ -1,0 +1,7 @@
+# Example USB logitech camera parameters
+
+# Parameters
+gscam_config: v4l2src device=/dev/video0 ! video/x-raw-rgb,framerate=30/1 ! ffmpegcolorspace
+frame_id: gscam
+camera_info_url: package://chapter5_tutorials/config/gscam/calibration_gscam.yaml
+

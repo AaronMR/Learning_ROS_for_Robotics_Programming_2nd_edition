@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+  <!-- Arguments -->
+  <!-- Show video output (both RAW and rectified) -->
+  <arg name="view" default="false"/>
+  <!-- Camera params (config) -->
+  <arg name="params" default="$(find chapter5_tutorials)/config/firewire_camera/format7_mode0.yaml"/>
+
+  <!-- Camera driver -->
+  <node pkg="camera1394" type="camera1394_node" name="camera1394_node">
+    <rosparam file="$(arg params)" command="load"/>
+  </node>
+
+  <!-- Camera image processing (color + rectification) -->
+  <node ns="camera" pkg="image_proc" type="image_proc" name="image_proc"/>
+
+  <!-- Show video output -->
+  <group if="$(arg view)">
+    <!-- Image viewer (non-rectified image) -->
+    <node pkg="image_view" type="image_view" name="non_rectified_image">
+      <remap from="image" to="camera/image_color"/>
+    </node>
+
+    <!-- Image viewer (rectified image) -->
+    <node pkg="image_view" type="image_view" name="rectified_image">
+      <remap from="image" to="camera/image_rect_color"/>
+    </node>
+  </group>
+</launch>
+

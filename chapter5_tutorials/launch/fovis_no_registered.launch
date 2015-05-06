@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+  <arg name="camera" default="camera"/>
+
+  <!-- Run fovis. -->
+  <node pkg="fovis_ros" type="fovis_mono_depth_odometer" name="kinect_odometer" output="screen">
+    <remap from="/camera/rgb/image_rect"  to="$(arg camera)/rgb/image_rect_mono"/>
+    <remap from="/camera/rgb/camera_info" to="$(arg camera)/rgb/camera_info"/>
+
+    <remap from="/camera/depth_registered/image_rect"  to="$(arg camera)/depth/image_rect"/>
+    <remap from="/camera/depth_registered/camera_info" to="$(arg camera)/depth/camera_info"/>
+
+    <param name="approximate_sync" value="true"/>
+  </node>
+</launch>
+

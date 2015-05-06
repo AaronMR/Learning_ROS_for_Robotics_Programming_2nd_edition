@@ -1,0 +1,9 @@
+<launch>
+  <rosparam file="$(find rosbook_arm_bringup)/config/rosbook_arm_motions.yaml" command="load"/>
+
+  <node pkg="play_motion" type="play_motion" name="play_motion">
+    <rosparam file="$(find rosbook_arm_bringup)/config/approach_planner.yaml" command="load"/>
+  </node>
+
+  <node pkg="play_motion" type="is_already_there.py" name="is_already_there"/>
+</launch>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package>
+  <name>rosbook_arm_description</name>
+  <version>0.0.0</version>
+  <description>ROS book arm URDF description</description>
+
+  <maintainer email="anil@todo.todo">anil</maintainer>
+  <author email="anil@todo.todo">anil</author>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <run_depend>xacro</run_depend>
+</package>

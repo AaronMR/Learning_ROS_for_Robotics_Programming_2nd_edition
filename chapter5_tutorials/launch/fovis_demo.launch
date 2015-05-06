@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+  <!-- Usage:
+  roslaunch chapter5_tutorials fovis_demo.launch -->
+
+  <!-- Logger config -->
+  <env name="ROSCONSOLE_CONFIG_FILE"
+       value="$(find chapter5_tutorials)/config/chapter5_tutorials.config"/>
+
+  <!-- Arguments -->
+  <!-- {hw_registered, sw_registered, no_registered} -->
+  <arg name="mode" default="no_registered"/>
+  <!-- Rviz display config. -->
+  <arg name="rviz_config" default="$(find chapter5_tutorials)/config/fovis_demo/rviz_$(arg mode).rviz"/>
+  <!-- Rviz (3D Point Cloud). -->
+  <arg name="rviz" default="true"/>
+
+  <!-- Run Kinect driver. -->
+  <include file="$(find chapter5_tutorials)/launch/openni_kinect_$(arg mode).launch"/>
+
+  <!-- Run fovis. -->
+  <include file="$(find chapter5_tutorials)/launch/fovis_$(arg mode).launch"/>
+
+  <!-- /base_link to /camera_link static transform. -->
+  <node pkg="tf" type="static_transform_publisher" name="base_to_camera_tf"
+        args="0 0 -0.05 0 0 0 base_link camera_link 100"/>
+
+  <group if="$(arg rviz)">
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_config)"/>
+  </group>
+</launch>
+

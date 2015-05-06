@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+  <arg name="camera" default="camera"/>
+  <arg name="throttle" default="2.0"/>
+
+  <!-- Convert metric for depth image. -->
+  <node pkg="nodelet" type="nodelet" name="nodelet_manager"
+        args="manager"/>
+  <node pkg="nodelet" type="nodelet" name="convert_image_rect"
+        args="load depth_image_proc/convert_metric nodelet_manager">
+    <remap from="image_raw" to="$(arg camera)/depth_registered/hw_registered/image_rect_raw"/>
+    <remap from="image"     to="$(arg camera)/depth_registered/hw_registered/image_rect"/>
+  </node>
+
+  <!-- Throttle RGB image. -->
+  <node pkg="topic_tools" type="throttle" name="throttle_rgb"
+        args="messages $(arg camera)/rgb/image_rect_mono $(arg throttle) $(arg camera)/rgb/image_rect_mono_throttled"/>
+  <node pkg="topic_tools" type="throttle" name="throttle_camera_info"
+        args="messages $(arg camera)/rgb/camera_info $(arg throttle) $(arg camera)/rgb/camera_info_throttled"/>
+
+  <!-- Run fovis. -->
+  <node pkg="fovis_ros" type="fovis_mono_depth_odometer" name="kinect_odometer" output="screen">
+    <remap from="/camera/rgb/image_rect"  to="$(arg camera)/rgb/image_rect_mono_throttled"/>
+    <remap from="/camera/rgb/camera_info" to="$(arg camera)/rgb/camera_info_throttled"/>
+
+    <remap from="/camera/depth_registered/image_rect"  to="$(arg camera)/depth_registered/hw_registered/image_rect"/>
+    <remap from="/camera/depth_registered/camera_info" to="$(arg camera)/depth_registered/hw_registered/camera_info"/>
+
+    <param name="approximate_sync" value="true"/>
+  </node>
+</launch>
+

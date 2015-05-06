@@ -1,0 +1,131 @@
+Waiting for service /camera/set_camera_info ...
+OK
+*** Added sample 1, p_x = 0.496, p_y = 0.855, p_size = 0.177, skew = 0.128
+*** Added sample 2, p_x = 0.464, p_y = 0.913, p_size = 0.240, skew = 0.004
+*** Added sample 3, p_x = 0.416, p_y = 1.000, p_size = 0.362, skew = 0.008
+*** Added sample 4, p_x = 0.355, p_y = 0.833, p_size = 0.709, skew = 0.033
+*** Added sample 5, p_x = 0.381, p_y = 0.046, p_size = 0.733, skew = 0.000
+*** Added sample 6, p_x = 0.449, p_y = 0.159, p_size = 0.639, skew = 0.009
+*** Added sample 7, p_x = 0.454, p_y = 0.313, p_size = 0.689, skew = 0.012
+*** Added sample 8, p_x = 0.433, p_y = 0.454, p_size = 0.726, skew = 0.020
+*** Added sample 9, p_x = 0.383, p_y = 0.585, p_size = 0.752, skew = 0.020
+*** Added sample 10, p_x = 0.432, p_y = 0.918, p_size = 0.783, skew = 0.019
+*** Added sample 11, p_x = 0.456, p_y = 0.676, p_size = 0.810, skew = 0.013
+*** Added sample 12, p_x = 0.444, p_y = 0.209, p_size = 0.812, skew = 0.011
+*** Added sample 13, p_x = 0.414, p_y = 0.371, p_size = 0.837, skew = 0.008
+*** Added sample 14, p_x = 0.529, p_y = 0.063, p_size = 0.856, skew = 0.002
+*** Added sample 15, p_x = 0.480, p_y = 0.000, p_size = 0.545, skew = 0.003
+*** Added sample 16, p_x = 0.506, p_y = 0.147, p_size = 0.465, skew = 0.014
+*** Added sample 17, p_x = 0.506, p_y = 0.293, p_size = 0.423, skew = 0.035
+*** Added sample 18, p_x = 0.568, p_y = 0.308, p_size = 0.297, skew = 0.027
+*** Added sample 19, p_x = 0.505, p_y = 0.392, p_size = 0.238, skew = 0.032
+*** Added sample 20, p_x = 0.462, p_y = 0.429, p_size = 0.139, skew = 0.009
+*** Added sample 21, p_x = 0.357, p_y = 0.449, p_size = 0.234, skew = 0.357
+*** Added sample 22, p_x = 0.333, p_y = 0.463, p_size = 0.227, skew = 0.008
+*** Added sample 23, p_x = 0.155, p_y = 0.493, p_size = 0.228, skew = 0.019
+*** Added sample 24, p_x = 0.670, p_y = 0.432, p_size = 0.240, skew = 0.001
+*** Added sample 25, p_x = 0.893, p_y = 0.435, p_size = 0.242, skew = 0.066
+*** Added sample 26, p_x = 0.839, p_y = 0.308, p_size = 0.241, skew = 0.022
+*** Added sample 27, p_x = 0.728, p_y = 0.215, p_size = 0.243, skew = 0.033
+*** Added sample 28, p_x = 0.570, p_y = 0.167, p_size = 0.241, skew = 0.016
+*** Added sample 29, p_x = 0.534, p_y = 0.017, p_size = 0.244, skew = 0.006
+*** Added sample 30, p_x = 0.545, p_y = 0.591, p_size = 0.242, skew = 0.008
+*** Added sample 31, p_x = 0.506, p_y = 0.736, p_size = 0.232, skew = 0.029
+*** Added sample 32, p_x = 0.491, p_y = 0.290, p_size = 0.219, skew = 0.132
+*** Added sample 33, p_x = 0.489, p_y = 0.267, p_size = 0.182, skew = 0.289
+*** Added sample 34, p_x = 0.807, p_y = 0.589, p_size = 0.239, skew = 0.036
+*** Added sample 35, p_x = 0.922, p_y = 0.588, p_size = 0.228, skew = 0.115
+*** Added sample 36, p_x = 0.905, p_y = 0.558, p_size = 0.221, skew = 0.277
+*** Added sample 37, p_x = 0.176, p_y = 0.452, p_size = 0.232, skew = 0.162
+*** Added sample 38, p_x = 0.520, p_y = 0.180, p_size = 0.203, skew = 0.179
+*** Added sample 39, p_x = 0.511, p_y = 0.162, p_size = 0.158, skew = 0.348
+*** Added sample 40, p_x = 0.484, p_y = 0.596, p_size = 0.222, skew = 0.136
+*** Added sample 41, p_x = 0.371, p_y = 0.651, p_size = 0.271, skew = 0.173
+*** Added sample 42, p_x = 0.414, p_y = 0.703, p_size = 0.315, skew = 0.237
+*** Added sample 43, p_x = 0.422, p_y = 0.679, p_size = 0.308, skew = 0.404
+*** Added sample 44, p_x = 0.517, p_y = 0.564, p_size = 0.313, skew = 0.188
+*** Added sample 45, p_x = 0.579, p_y = 0.486, p_size = 0.316, skew = 0.021
+*** Added sample 46, p_x = 0.606, p_y = 0.445, p_size = 0.315, skew = 0.258
+*** Added sample 47, p_x = 0.665, p_y = 0.461, p_size = 0.300, skew = 0.389
+*** Added sample 48, p_x = 0.777, p_y = 0.502, p_size = 0.299, skew = 0.295
+*** Added sample 49, p_x = 0.876, p_y = 0.531, p_size = 0.297, skew = 0.196
+*** Added sample 50, p_x = 0.782, p_y = 0.422, p_size = 0.239, skew = 0.795
+*** Added sample 51, p_x = 0.774, p_y = 0.410, p_size = 0.228, skew = 0.991
+*** Added sample 52, p_x = 0.704, p_y = 0.338, p_size = 0.232, skew = 0.834
+*** Added sample 53, p_x = 0.698, p_y = 0.308, p_size = 0.258, skew = 0.373
+*** Added sample 54, p_x = 0.690, p_y = 0.282, p_size = 0.264, skew = 0.178
+*** Added sample 55, p_x = 0.645, p_y = 0.248, p_size = 0.241, skew = 0.552
+*** Added sample 56, p_x = 0.636, p_y = 0.249, p_size = 0.242, skew = 0.773
+*** Added sample 57, p_x = 0.632, p_y = 0.286, p_size = 0.241, skew = 0.947
+*** Added sample 58, p_x = 0.911, p_y = 0.782, p_size = 0.307, skew = 0.245
+*** Added sample 59, p_x = 0.626, p_y = 0.844, p_size = 0.422, skew = 0.039
+*** Added sample 60, p_x = 0.200, p_y = 0.877, p_size = 0.363, skew = 0.191
+*** Added sample 61, p_x = 0.404, p_y = 0.799, p_size = 0.281, skew = 0.117
+# oST version 5.0 parameters
+
+
+[image]
+
+width
+640
+
+height
+480
+
+[narrow_stereo/left]
+
+camera matrix
+628.605769 0.000000 330.525637
+0.000000 626.873332 252.463247
+0.000000 0.000000 1.000000
+
+distortion
+-0.070913 0.102063 -0.001131 -0.000032 0.000000
+
+rectification
+1.000000 0.000000 0.000000
+0.000000 1.000000 0.000000
+0.000000 0.000000 1.000000
+
+projection
+620.937439 0.000000 329.896849 0.000000
+0.000000 620.437439 251.769990 0.000000
+0.000000 0.000000 1.000000 0.000000
+
+
+Wrote calibration data to /tmp/calibrationdata.tar.gz
+D =  [-0.07091320852650883, 0.10206300202184179, -0.0011311609594808305, -3.158232065996074e-05, 0.0]
+K =  [628.6057692040582, 0.0, 330.5256369576961, 0.0, 626.8733323413294, 252.46324692016918, 0.0, 0.0, 1.0]
+R =  [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]
+P =  [620.9374389648438, 0.0, 329.8968493766006, 0.0, 0.0, 620.4374389648438, 251.76999019259893, 0.0, 0.0, 0.0, 1.0, 0.0]
+# oST version 5.0 parameters
+
+
+[image]
+
+width
+640
+
+height
+480
+
+[narrow_stereo/left]
+
+camera matrix
+628.605769 0.000000 330.525637
+0.000000 626.873332 252.463247
+0.000000 0.000000 1.000000
+
+distortion
+-0.070913 0.102063 -0.001131 -0.000032 0.000000
+
+rectification
+1.000000 0.000000 0.000000
+0.000000 1.000000 0.000000
+0.000000 0.000000 1.000000
+
+projection
+620.937439 0.000000 329.896849 0.000000
+0.000000 620.437439 251.769990 0.000000
+0.000000 0.000000 1.000000 0.000000
+

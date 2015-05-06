@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+  <!-- Camera driver -->
+  <node pkg="camera1394" type="camera1394_node" name="camera1394_node" >
+    <rosparam file="$(find chapter5_tutorials)/config/firewire_camera/format7_mode0.yaml" command="load"/>
+  </node>
+
+  <!-- Camera image processing (color) -->
+  <node ns="camera" pkg="image_proc" type="image_proc" name="image_proc" />
+
+  <!-- Calibration tool, for a calibration pattern of 8x6 inner squares of 3cm
+ -->
+  <node pkg="camera_calibration" type="cameracalibrator.py"
+        name="cameracalibrator" args="--pattern circles --size 11x8 --square 0.030"
+        output="screen">
+    <remap from="image" to="camera/image_color" />
+    <remap from="camera" to="camera" />
+  </node>
+</launch>
+

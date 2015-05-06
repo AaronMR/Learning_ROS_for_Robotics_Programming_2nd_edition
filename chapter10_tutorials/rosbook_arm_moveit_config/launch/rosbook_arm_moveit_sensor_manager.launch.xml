@@ -1,0 +1,3 @@
+<launch>
+  <rosparam command="load" file="$(find rosbook_arm_moveit_config)/config/sensors_rgbd.yaml" />
+</launch>

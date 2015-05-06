@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+  <!-- Usage:
+  roslaunch chapter5_tutorials camera_stereo.launch -->
+
+  <!-- Logger config -->
+  <env name="ROSCONSOLE_CONFIG_FILE"
+       value="$(find chapter5_tutorials)/config/chapter5_tutorials.config"/>
+
+  <!-- Arguments -->
+  <!-- Camera params (config). -->
+  <arg name="params_camera" default="$(find chapter5_tutorials)/config/camera_stereo/logitech_c120.yaml"/>
+  <!-- Disparity image params. -->
+  <arg name="params_disparity" default="$(find chapter5_tutorials)/config/camera_stereo/disparity.yaml"/>
+  <!-- Camera name. -->
+  <arg name="camera" default="/stereo"/>
+  <!-- View camera stream. -->
+  <arg name="view" default="false"/>
+  <!-- Rviz (3D Point Cloud). -->
+  <arg name="rviz" default="false"/>
+  <!-- Config camera stream. -->
+  <arg name="config_camera" default="false"/>
+  <!-- Config disparity image. -->
+  <arg name="config_disparity" default="false"/>
+  <!-- Save camera stream. -->
+  <arg name="save" default="false"/>
+  <!-- Calibrate. -->
+  <arg name="calibrate" default="false"/>
+  <!-- Check calibration. -->
+  <arg name="check" default="false"/>
+  <!-- Pose calibration. -->
+  <arg name="calibrate_pose" default="false"/>
+  <!-- Frame tf publisher (static_tf_publisher). -->
+  <arg name="tf" default="true"/>
+  <!-- Visual Odometry. -->
+  <arg name="odometry" default="false"/>
+  <!-- Rviz display config. -->
+  <arg if="$(arg odometry)" name="rviz_config" default="$(find chapter5_tutorials)/config/camera_stereo/rviz_odometry.rviz"/>
+  <arg unless="$(arg odometry)" name="rviz_config" default="$(find chapter5_tutorials)/config/camera_stereo/rviz.vcg"/>
+
+  <!-- Run driver. -->
+  <node name="stereo" pkg="chapter5_tutorials" type="camera_stereo" output="screen">
+    <rosparam file="$(arg params_camera)" command="load"/>
+  </node>
+
+  <!-- Camera image processing (color, rect). -->
+  <node ns="$(arg camera)" pkg="stereo_image_proc" type="stereo_image_proc"
+      name="stereo_image_proc" output="screen">
+    <rosparam file="$(arg params_disparity)" command="load"/>
+  </node>
+
+  <group if="$(arg view)">
+    <node name="view" pkg="image_view" type="stereo_view">
+      <remap from="stereo" to="$(arg camera)"/>
+      <remap from="image" to="image_rect_color"/>
+      <param name="autosize" value="false"/>
+    </node>
+  </group>
+
+  <group if="$(arg rviz)">
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_config)"/>
+  </group>
+
+  <group if="$(arg config_camera)">
+      <node name="config_stereo" pkg="dynamic_reconfigure" type="reconfigure_gui" args="$(arg camera)"/>
+  </group>
+
+  <group if="$(arg config_disparity)">
+      <node name="config_stereo_image_proc" pkg="dynamic_reconfigure" type="reconfigure_gui" args="$(arg camera)/stereo_image_proc"/>
+  </group>
+
+  <group if="$(arg save)">
+      <node name="record" pkg="rosbag" type="record" args="$(arg camera)/left/image_raw $(arg camera)/right/image_raw"/>
+  </group>
+
+  <group if="$(arg calibrate)">
+    <!-- Calibration tool, for a calibration (chessboard) pattern of 8x6 inner squares of 3cm -->
+    <node ns="$(arg camera)" name="cameracalibrator"
+          pkg="camera_calibration" type="cameracalibrator.py"
+          args="--size 8x6 --square 0.030" output="screen">
+      <remap from="left" to="left/image_raw"/>
+      <remap from="right" to="right/image_raw"/>
+      <remap from="left_camera" to="left"/>
+      <remap from="right_camera" to="right"/>
+    </node>
+  </group>
+
+  <group if="$(arg check)">
+    <node name="camera_check"
+          pkg="camera_calibration" type="cameracheck.py"
+          args="--size 8x6 --square 0.030" output="screen">
+      <remap from="stereo" to="$(arg camera)"/>
+    </node>
+  </group>
+
+  <group if="$(arg calibrate_pose)">
+      <include file="$(find camera_pose_calibration)/blocks/calibration_tf_publisher.launch">
+        <arg name="cache_file" value="/tmp/camera_pose_calibration_cache.bag"/>
+      </include>
+  </group>
+
+  <group if="$(arg tf)">
+    <include file="$(find chapter5_tutorials)/launch/frames/stereo_frames.launch"/>
+  </group>
+
+  <group if="$(arg odometry)">
+    <include file="$(find chapter5_tutorials)/launch/visual_odometry/viso2_stereo_odometer.launch">
+      <remap from="stereo" to="$(arg camera)"/>
+      <remap from="image" to="image_rect"/>
+    </include>
+  </group>
+</launch>
+

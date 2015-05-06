@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+  <!-- Usage:
+  roslaunch chapter5_tutorials camera_timer.launch fps:=30 camera_index:=1
+  -->
+
+  <!-- Logger config -->
+  <env name="ROSCONSOLE_CONFIG_FILE"
+       value="$(find chapter5_tutorials)/config/chapter5_tutorials.config"/>
+
+  <!-- Arguments -->
+  <!-- FPS. -->
+  <arg name="fps" default="4"/>
+  <!-- Camera index. -->
+  <arg name="camera_index" default="1"/>
+  <!-- View camera stream. -->
+  <arg name="view" default="false"/>
+  <!-- Save camera stream. -->
+  <arg name="save" default="false"/>
+
+  <!-- Run driver -->
+  <node name="camera" pkg="chapter5_tutorials" type="camera_timer" output="screen">
+    <param name="fps" value="$(arg fps)"/>
+    <param name="camera_index" value="$(arg camera_index)"/>
+  </node>
+
+  <group if="$(arg view)">
+    <node name="view" pkg="image_view" type="image_view">
+      <remap from="image" to="/camera/image_raw"/>
+    </node>
+  </group>
+
+  <group if="$(arg save)">
+    <node name="record" pkg="rosbag" type="record" args="/camera/image_raw"/>
+  </group>
+</launch>
+

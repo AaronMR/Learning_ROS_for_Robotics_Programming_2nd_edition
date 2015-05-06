@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+  <!-- Logger config -->
+  <env name="ROSCONSOLE_CONFIG_FILE"
+       value="$(find chapter5_tutorials)/config/chapter5_tutorials.config"/>
+
+  <!-- Arguments -->
+  <!-- Camera params (config) -->
+  <arg name="params" default="$(find chapter5_tutorials)/config/camera/webcam.yaml"/>
+  <!-- Camera name. -->
+  <arg name="camera" default="/camera"/>
+  <!-- View camera stream. -->
+  <arg name="view" default="false"/>
+  <!-- Config camera stream. -->
+  <arg name="config" default="false"/>
+  <!-- Save camera stream. -->
+  <arg name="save" default="false"/>
+  <!-- Calibrate. -->
+  <arg name="calibrate" default="false"/>
+  <!-- Check calibration. -->
+  <arg name="check" default="false"/>
+  <!-- Visual Odometry. -->
+  <arg name="odometry" default="false"/>
+
+  <!-- Run driver -->
+  <node name="camera" pkg="chapter5_tutorials" type="camera" output="screen">
+    <rosparam file="$(arg params)" command="load"/>
+  </node>
+
+  <!-- Camera image processing (color, rect) -->
+  <node ns="$(arg camera)" pkg="image_proc" type="image_proc" name="image_proc"/>
+
+  <group if="$(arg view)">
+    <node name="view" pkg="image_view" type="image_view">
+      <remap from="image" to="$(arg camera)/image_raw"/>
+    </node>
+  </group>
+
+  <group if="$(arg config)">
+      <node name="config" pkg="dynamic_reconfigure" type="reconfigure_gui"
+            args="$(arg camera)"/>
+  </group>
+
+  <group if="$(arg save)">
+    <node name="record" pkg="rosbag" type="record" args="$(arg camera)/image_raw"/>
+  </group>
+
+  <group if="$(arg calibrate)">
+      <!-- Calibration tool, for a calibration (chessboard) pattern of 8x6 inner squares of 3cm -->
+    <node name="cameracalibrator"
+          pkg="camera_calibration" type="cameracalibrator.py"
+          args="--size 8x6 --square 0.030" output="screen">
+      <remap from="image" to="$(arg camera)/image_raw"/>
+      <remap from="camera" to="$(arg camera)"/>
+    </node>
+  </group>
+
+  <group if="$(arg check)">
+    <node name="camera_check"
+          pkg="camera_calibration" type="cameracheck.py"
+          args="--size 8x6 --square 0.030" output="screen">
+      <remap from="monocular" to="$(arg camera)"/>
+    </node>
+  </group>
+
+  <group if="$(arg odometry)">
+    <include file="$(find chapter5_tutorials)/launch/visual_odometry/viso2_mono_odometer.launch"/>
+  </group>
+</launch>
+

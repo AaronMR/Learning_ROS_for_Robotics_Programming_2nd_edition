@@ -1,0 +1,25 @@
+<launch>
+  <arg name="world" default="empty"/>
+  <arg name="robot" default="base"/>
+  <arg name="gzpose" default="-x 0 -y 0 -z 0.0 -R 0.0 -P 0.0 -Y 0.0"/>
+  <arg name="gui" default="true"/>
+  <arg name="debug" default="false"/>
+
+  <env name="GAZEBO_MODEL_PATH" value="$(find rosbook_arm_gazebo)/models:$(optenv GAZEBO_MODEL_PATH)"/>
+
+  <!-- Start up world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" default="$(find rosbook_arm_gazebo)/worlds/$(arg world).world"/>
+    <arg name="gui" default="$(arg gui)"/>
+    <arg name="debug" default="$(arg debug)"/>
+  </include>
+
+  <!-- Spawn robot in simulation -->
+  <include file="$(find rosbook_arm_gazebo)/launch/rosbook_arm_spawn.launch">
+    <arg name="robot"  value="$(arg robot)"/>
+    <arg name="gzpose" value="$(arg gzpose)"/>
+  </include>
+
+  <!-- Bring up robot -->
+  <include file="$(find rosbook_arm_bringup)/launch/rosbook_arm_bringup.launch"/>
+</launch>

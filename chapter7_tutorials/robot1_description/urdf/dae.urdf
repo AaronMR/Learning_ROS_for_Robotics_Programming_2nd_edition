@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<robot name="robot1">
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <mesh scale="1 1 1" filename="package://robot1_description/meshes/bot.dae"/>
+      </geometry>
+      <origin xyz="0 0 0.226"/>
+    </visual>
+  </link>
+</robot>

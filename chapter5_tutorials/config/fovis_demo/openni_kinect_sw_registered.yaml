@@ -1,0 +1,11 @@
+depth_registration: true
+
+rgb_processing                 : true
+ir_processing                  : false
+depth_processing               : true
+depth_registered_processing    : true
+disparity_processing           : false
+disparity_registered_processing: false
+hw_registered_processing       : false
+sw_registered_processing       : true
+

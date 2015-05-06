@@ -1,0 +1,11 @@
+<launch>
+  <arg name="robot" default="base"/>
+
+  <!-- Load URDF into ROS param server -->
+  <param name="robot_description" command="$(find xacro)/xacro
+    '$(find rosbook_arm_description)/robots/rosbook_arm_$(arg robot).urdf.xacro'"/>
+
+  <!-- Joint limits -->
+  <rosparam file="$(find rosbook_arm_description)/config/joint_limits.yaml" command="load"/>
+</launch>
+
