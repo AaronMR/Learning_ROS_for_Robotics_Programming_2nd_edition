@@ -21,6 +21,8 @@
   <build_depend>camera_info_manager</build_depend>
   <build_depend>tf</build_depend>
 
+  <build_depend>libopencv-dev</build_depend>
+
   <run_depend>roscpp</run_depend>
   <run_depend>message_runtime</run_depend>
   <run_depend>sensor_msgs</run_depend>
@@ -31,4 +33,6 @@
   <run_depend>image_transport</run_depend>
   <run_depend>camera_info_manager</run_depend>
   <run_depend>tf</run_depend>
+
+  <run_depend>libopencv-dev</run_depend>
 </package>
