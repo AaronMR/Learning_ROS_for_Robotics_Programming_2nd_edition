@@ -248,7 +248,7 @@
     <odometryFrame>odom</odometryFrame>
     <torque>1</torque>
     <topicName>cmd_vel</topicName>
-    <broadcastTF>0</broadcastTF>
+    <broadcastTF>1</broadcastTF>
   </plugin>
 </gazebo>
 
