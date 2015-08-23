@@ -242,7 +242,10 @@
     <rightRearJoint>base_to_wheel4</rightRearJoint>
     <wheelSeparation>4</wheelSeparation>
     <wheelDiameter>0.1</wheelDiameter>
+    <commandTopic>cmd_vel</commandTopic>
+    <odometryTopic>odom</odometryTopic>
     <robotBaseFrame>base_footprint</robotBaseFrame>
+    <odometryFrame>odom</odometryFrame>
     <torque>1</torque>
     <topicName>cmd_vel</topicName>
     <broadcastTF>0</broadcastTF>
