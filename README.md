@@ -12,7 +12,10 @@
 ## Installation ##
 
 Install **ROS Hydro** on a compatible **Ubuntu** distro following the official instructions provided [here](http://wiki.ros.org/hydro/Installation/Ubuntu).
-Note that **ROS Indigo** might also work for most of the source code.
+
+For **ROS Indigo** use the [**indigo-devel**](https://github.com/AaronMR/Learning_ROS_for_Robotics_Programming_2nd_edition/tree/indigo-devel) branch.
+
+For **ROS Jade** use the [**jade-devel**](https://github.com/AaronMR/Learning_ROS_for_Robotics_Programming_2nd_edition/tree/jade-devel) branch.
 
 Create a workspace:
 ``` bash
@@ -23,7 +26,7 @@ wstool init
 
 Download this repository:
 ``` bash
-wstool set ROS_Book_Hydro --git git@github.com:AaronMR/ROS_Book_Hydro.git
+wstool set ros_book --git git@github.com:AaronMR/Learning_ROS_for_Robotics_Programming_2nd_edition.git
 wstool up -j8
 ```
 
@@ -43,7 +46,7 @@ source devel/setup.bash
 
 ## Tutorials ##
 
-* **Chapter  1:** Getting started with ROS Hydro (no source code as it covers the installation)
+* **Chapter  1:** Getting started with ROS (no source code as it covers the installation)
 * **Chapter  2:** ROS Architecture and Concepts
 * **Chapter  3:** Visualization and Debug Tools
 * **Chapter  4:** Using Sensors and Actuators with ROS
