@@ -19,6 +19,12 @@ For **ROS Hydro** use the [**hydro-devel**](https://github.com/AaronMR/Learning_
 
 For **ROS Indigo** use the [**indigo-devel**](https://github.com/AaronMR/Learning_ROS_for_Robotics_Programming_2nd_edition/tree/indigo-devel) branch.
 
+Install the OpenCV non-free repository:
+``` bash
+sudo add-apt-repository --yes ppa:xqms/opencv-nonfree
+sudo apt-get install libopencv-nonfree-dev libopencv-nonfree2.4
+```
+
 Create a workspace:
 ``` bash
 mkdir -p ~/dev/catkin_ws/src
