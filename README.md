@@ -1,6 +1,8 @@
 # Learning ROS for Robotics Programming - Second Edition #
 
-**Learning ROS for Robotics Programming - Second Edition** book tutorials source code.
+[**Learning ROS for Robotics Programming - Second Edition**](https://www.packtpub.com/hardware-and-creative/learning-ros-robotics-programming-%E2%80%93-second-edition) book tutorials source code.
+
+<a href="https://www.packtpub.com/hardware-and-creative/learning-ros-robotics-programming-%E2%80%93-second-edition"><img src=https://www.packtpub.com/sites/default/files/7580OS_Learning%20ROS%20for%20Robotics%20Programming%20-%20Second%20Edition.jpg width=200/></a>
 
 ## Authors ##
 
