@@ -6,10 +6,10 @@
 
 ## Authors ##
 
-* Aaron Martínez
-* Anil Mahtani
-* Enrique Fernández
-* Luiz Sánchez
+* [Enrique Fernández](https://github.com/efernandez)
+* [Luis Sánchez Crespo](https://github.com/LuisSC)
+* [Anil Mahtani](https://github.com/Anilm3)
+* [Aaron Martínez](https://github.com/AaronMR)
 
 ## Installation ##
 
@@ -44,10 +44,9 @@ cd ..
 rosdep install --from-paths src -iy
 ```
 
-source /opt/ros/$(rosversion -d)/setup.bash
-
 Build the source code (alternatively, you can use `catkin build` instead of `catkin_make`):
 ``` bash
+source /opt/ros/$(rosversion -d)/setup.bash
 catkin_make -j4
 source devel/setup.bash
 ```
