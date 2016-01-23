@@ -1,23 +1,33 @@
 <?xml version="1.0"?>
 <launch>
+  <arg name="model" default="$(find robot1_description)/urdf/robot1_base_04.xacro"/>
 
-  	<param name="/use_sim_time" value="true" />
+  <param name="/use_sim_time" value="true" />
+  <param name="robot_description" command="$(find xacro)/xacro.py $(arg model)" />
 
-	<remap from="robot/laser/scan" to="/scan" />  
-  	<!-- start up wg world -->
-	<include file="$(find gazebo_ros)/launch/willowgarage_world.launch" args="gui:=false">
-	</include>
+  <remap from="robot/laser/scan" to="/scan" />
 
-  	<arg name="model" default="$(find robot1_description)/urdf/robot1_base_04.xacro"/>
-  	<param name="robot_description" command="$(find xacro)/xacro.py $(arg model)" />
+  <!-- start up wg world -->
+  <!-- We cannot call willowgarage_world.launch setting the gui arg to false
+       because that launch file doesn't take any arg.
+       Instead we call empty_world.launch with the same args that are set in
+       willowgarage_world.launch, expect for gui, which is changed to false. -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="worlds/willowgarage.world"/> <!-- Note: the world_name is with respect to GAZEBO_RESOURCE_PATH environmental variable -->
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="false"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
 
-  	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" ></node>
-  	<!-- start robot state publisher -->
- 	<node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen" />
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
 
-	<node name="spawn_robot" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -z 0.1 -model robot_model" respawn="false" output="screen" />
+  <!-- start robot state publisher -->
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen"/>
 
-	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find chapter9_tutorials)/launch/navigation.rviz" />
+  <node name="spawn_robot" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -z 0.1 -model robot_model" respawn="false" output="screen"/>
 
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find chapter9_tutorials)/launch/navigation.rviz"/>
 </launch>
 
